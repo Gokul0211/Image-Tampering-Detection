@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Analysis | AuthentiScan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔍</text></svg>">
+</head>
+<body>
+    <header class="glass-header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-camera-retro"></i>
+                <span>AuthentiScan</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="analyze.html" class="active"><i class="fas fa-search"></i> Analyze</a></li>
+                    <li><a href="index.html#how-it-works"><i class="fas fa-question-circle"></i> How It Works</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="analyzer-container">
+        <div class="container">
+            <h1 class="analyzer-title">Image Authenticity Analyzer</h1>
+            <p class="analyzer-subtitle">Upload an image to check for digital tampering or deepfake alterations</p>
+            
+            <div class="analyzer-card">
+                <div class="upload-section">
+                    <div class="upload-box" id="uploadBox">
+                        <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                        <h3>Drag & Drop Image</h3>
+                        <p>or click to browse files</p>
+                        <input type="file" id="imageUpload" accept="image/*">
+                        <div class="file-requirements">
+                            <p><i class="fas fa-info-circle"></i> Supports: JPG, PNG, WEBP (Max 10MB)</p>
+                        </div>
+                    </div>
+                    <div class="image-preview" id="imagePreview">
+                        <img id="previewImage" src="#" alt="Preview">
+                        <button class="btn clear-btn" id="clearBtn">
+                            <i class="fas fa-times"></i> Clear
+                        </button>
+                    </div>
+                </div>
+
+                <div class="analysis-section">
+                    <button class="btn analyze-btn" id="analyzeBtn" disabled>
+                        <i class="fas fa-search"></i> Analyze Image
+                    </button>
+                    
+                    <div class="results-container" id="resultsContainer">
+                        <div class="results-placeholder">
+                            <i class="fas fa-microscope results-icon"></i>
+                            <h3>Analysis Results Will Appear Here</h3>
+                            <p>Upload an image to begin authenticity verification</p>
+                        </div>
+                        
+                        <div class="results-content" id="resultsContent" style="display: none;">
+                            <h3 class="results-title">Authenticity Report</h3>
+                            <div class="result-metric result-status">
+                                <span class="metric-label">Status:</span>
+                                <span class="metric-value" id="resultStatus">Unknown</span>
+                            </div>
+                            <div class="result-metric">
+                                <span class="metric-label">Confidence:</span>
+                                <span class="metric-value" id="resultConfidence">--%</span>
+                            </div>
+                            <div class="result-metric">
+                                <span class="metric-label">Analysis Time:</span>
+                                <span class="metric-value" id="analysisTime">-- ms</span>
+                            </div>
+                            
+                            <div class="ela-container">
+                                <h4>Error Level Analysis</h4>
+                                <div class="ela-image" id="elaImageContainer">
+                                    <p>ELA visualization will appear here</p>
+                                </div>
+                                <p class="ela-description">Areas with inconsistent compression levels may indicate tampering</p>
+                            </div>
+                            
+                            <div class="recommendations">
+                                <h4>Recommendations</h4>
+                                <p id="recommendationText">Based on the analysis, we recommend...</p>
+                            </div>
+                        </div>
+                        
+                        <div class="loading-overlay hidden" id="loadingOverlay">
+                            <div class="spinner"></div>
+                            <p>Analyzing image...</p>
+                            <p class="loading-subtext">Processing 143 image features</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2023 AuthentiScan. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
